@@ -1,4 +1,4 @@
-const {select} = require('@inquirer/prompts')
+const {select, input} = require('@inquirer/prompts')
 
 const start = async () => {
     
@@ -27,12 +27,21 @@ const start = async () => {
                 console.log("Listado");
                 break;
             case "cadastrar":
-                console.log("Cadastrar");
+                await cadastrarMeta();
                 break;
             case "sair":
                 console.log('Atá a Próxima')
                 return
         }
+    }
+}
+
+const cadastrarMeta = async () => {
+    const opcao = await input({message: "Digite sua meta"})
+     
+    if(opcao.length <= 0){
+        console.log('Digite uma meta válida!!!')
+        return cadastrarMeta();
     }
 }
 
