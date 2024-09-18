@@ -41,7 +41,10 @@ const cadastrarMeta = async () => {
      
     if(opcao.length <= 0){
         console.log('Digite uma meta válida!!!')
-        return cadastrarMeta();
+        opcao = await input({message: "Deseje Continuar?"})
+        if(opcao = 's'){
+            return cadastrarMeta();
+        }
     }
 }
 
